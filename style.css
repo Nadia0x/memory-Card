@@ -1,0 +1,60 @@
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #333;
+}
+
+#game-board {
+    display: grid;
+    grid-template-columns: repeat(3, 100px);
+    grid-gap: 10px;
+    margin-top: 30px;
+}
+
+.card {
+    width: 100px;
+    height: 150px;
+    background-color: #ffd700;
+    border-radius: 10px;
+    border: 1px solid #d9b510;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    cursor: pointer;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+    background-image: url('../res/image/img.jpg');
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.2s ease-in-out, background-color 0.5s ease, background-image 0.5s ease;
+}
+
+.hidden {
+    background-color: #ffffff;
+    color: #333;
+}
+
+.card.flipped {
+    transform: rotateY(180deg);
+    background-color: #ffffff;
+    background-image: url('../res/image/hh.jpg');
+}
+
+.matched {
+    background-color: blue !important;
+    color: #fff;
+}
+
+#start-button {
+    padding: 15px 30px;
+    font-size: 20px;
+    cursor: pointer;
+    background-color: #ffd700;
+    border: none;
+    border-radius: 8px;
+    color: #333;
+}
