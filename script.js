@@ -85,3 +85,44 @@ const gameBoard = document.getElementById('game-board');
             setTimeout(checkMatch, 500);
         }
     }
+    
+function checkMatch () {
+    const [card1,card2] = flippedCards;
+
+    if (card1.dataset.card === card2.dataset.card) {
+        card1.removeEventListener('click',flipCard);
+        card2.removeEventListene('click',flipCard);
+        card1.classList.add('hidden','matched');
+        card2.classList.add('hidden','matched');
+        document.getElementById('correct-sound').play();
+    } else { 
+       card1.textContent =//'';
+       card2.textContent = '';
+        document.getElementById('loss-sound').play();
+
+      setTimeout(() => {
+        card1.style.backgroundImage = //"url('img.jpg')";
+        card2.style.backgroundImage = //"url('img.jpg')";
+        card1.classList.remove('flipped');
+        card2.classList.remove('flipped');
+          }, 500);
+
+         chancesLeft--;
+         updateChancesDisplay();
+
+    }
+    
+    card1.style.transform = 'rotateY(0deg)';
+    card2.style.transform = 'rotateY(0deg)';
+
+    flippedCards = [];
+    isProcessing = false;
+    
+    if  (document.querySelectorAll('.card:not(.hidden)'). length === 0)  {
+        alert('Congratulations! You won!');
+    } else if  (chancesLeft === 0)  {
+       isGameOver = true;
+        alert('Game Over. you ran out of chances.');
+    }
+    }
+}
